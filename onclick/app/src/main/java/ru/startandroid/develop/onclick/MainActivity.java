@@ -27,22 +27,23 @@ public class MainActivity extends Activity {
         btnCancel = (Button) findViewById(R.id.btnCancel);
 
 
-        View.OnClickListener oclBtnOk = new View.OnClickListener() {
+        View.OnClickListener oclBtn = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                tvOut.setText("Нажата кнопка ОК");
+                // по id определеяем кнопку, вызвавшую этот обработчик
+                switch (v.getId()) {
+                    case R.id.btnOk:
+                        // кнопка ОК
+                        tvOut.setText("Нажата кнопка ОК");
+                        break;
+                    case R.id.btnCancel:
+                        // кнопка Cancel
+                        tvOut.setText("Нажата кнопка Cancel");
+                        break;
+                }
             }
         };
-        btnOk.setOnClickListener(oclBtnOk);
-
-        View.OnClickListener oclBtnCancel = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Меняем текст в TextView (tvOut)
-                tvOut.setText("Нажата кнопка Cancel");
-            }
-        };
-        btnCancel.setOnClickListener(oclBtnCancel);
+        btnOk.setOnClickListener(oclBtn);
+        btnCancel.setOnClickListener(oclBtn);
     }
 }
